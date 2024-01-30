@@ -137,6 +137,8 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 28
         button.backgroundColor = UIColor(hex: "#F5484A")
         button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
+        button.isEnabled = false
+        button.backgroundColor = .darkGray
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -284,7 +286,7 @@ class ViewController: UIViewController {
     @objc private func enabledButton(_ sender: UITextField) {
         guard let a = passwordTF.text, let b = confirmTF.text else {return}
         
-        if a.count >= 6 && b.count >= 6 {
+        if a.count >= 6 && b.count >= 6 && passwordTF.text == confirmTF.text {
             mainButton.isEnabled = true
             mainButton.backgroundColor = UIColor(hex: "#F5484A")
         } else {
